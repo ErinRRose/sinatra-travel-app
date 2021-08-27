@@ -1,4 +1,4 @@
-class CreateTravelEntries < ActiveRecord::Migration
+class CreateTravelEntries < ActiveRecord::Migration[4.2]
   def change
     create_table :travel_entries do |t|
       t.string :content
