@@ -26,13 +26,32 @@ class UsersController <ApplicationController
     
 
     get '/signup' do
-    
+        erb :signup
     end
 
+    post '/users' do
+        if params[:name] != "" && params[:username] != "" && params[:password] != "" 
+            @user = User.create[params]
+            session[:user_id] = @user.id
+            redirect "/users/#{@user.id}"
+        else
+            redirect '/signup'
+            #include a message, letting them know what happened
+        end
+
+    end
 
     #route for signup
 
     get '/users/:id'
-    "user show route"
+    #"user show route"
+        @user = User.find_by(id: params[:id])
+        erb :'/users/show' 
     end
+
+    get '/logout' do
+        session.clear
+        redirect '/'
+    end
+
 end
