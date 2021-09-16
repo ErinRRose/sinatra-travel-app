@@ -19,6 +19,10 @@ class TravelEntriesController < ApplicationController
         
     end
     # show route for a travel entry
+    get '/travel_entries/:id' do
+      @travel_entry = TravelEntry.find(params[:id])
+      erb :'travel_entries/show'
+    end
 
     # index route for all travel entries
 
