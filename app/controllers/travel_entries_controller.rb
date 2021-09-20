@@ -24,6 +24,9 @@ class TravelEntriesController < ApplicationController
       erb :'travel_entries/show'
     end
 
+    get '/travel_entries/:id/edit' do
+      erb :'/travel_entries/edit'
+    end
     # index route for all travel entries
 
 end
