@@ -11,8 +11,8 @@ class TravelEntriesController < ApplicationController
       end
 
       if params[:content] != ""
-        @travel_entry = TravelEntry.create(content: params[:content], user_id: current_user.id)
-        redirect "/travel_entries/#{travel_entry.id}"
+        @travel_entry = TravelEntry.create(content: params[:content], user_id: current_user.id, name_location: params[:name_location])
+        redirect "/travel_entries/#{@travel_entry.id}"
       else
         redirect '/travel_entries/new'
       end
@@ -25,6 +25,7 @@ class TravelEntriesController < ApplicationController
     end
 
     get '/travel_entries/:id/edit' do
+      @travel_entry = TravelEntry.find(params[:id])
       erb :'/travel_entries/edit'
     end
     # index route for all travel entries
