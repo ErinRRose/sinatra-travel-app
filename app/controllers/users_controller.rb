@@ -32,10 +32,10 @@ class UsersController <ApplicationController
         @user = User.new(params)
             if @user.save
                 session[:user_id] = @user.id
-               # flash[:message] = "You have created a new account, #{@user.name}! Welcome!"
+               #flash[:message] = "You have created a new account, #{@user.name}! Welcome!"
                 redirect "/users/#{@user.id}"
             else
-                #flash[:message] = "Account creation failure: #{@user.errors.full_messages.to_sentence}"
+               # flash[:message] = "Account creation failure: #{@user.errors.full_messages.to_sentence}"
                 redirect '/signup'
             end
     end
