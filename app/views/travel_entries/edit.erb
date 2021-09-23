@@ -1,10 +1,10 @@
 <h2>Edit Travel Entry: </h2>
 
 <form class="" action="/travel_entries/<%= @travel_entry.id %>" method="post">
-    <input type="hidden" name="method" value="patch">
+    <input type="hidden" name="_method" value="patch">
     <label for="name_location">Location:</label>
     <input type="text" name="name_location" value="<%= @travel_entry.name_location %>">
     <label for="content">Notes about this place:</label>
-    <input type="text" name="content" value="<%= @travel_entry.content %>">
+    <textarea name="content" style="width:auto; height:auto;"><%= @travel_entry.content %></textarea>
     <input type="submit" name="" value="Submit">
 </form>
