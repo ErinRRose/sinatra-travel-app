@@ -2,4 +2,10 @@
 
 <p><%= @travel_entry.name_location %> - <%= @travel_entry.content %></p>
 
+<strong><%= @travel_entry.name_location %></strong>
+<p><%= @travel_entry.content %></p>
+
+<% if authorized?(travel_entry) %>
 <a href="/travel_entries/<%= @travel_entry.id %>/edit">Edit Entry</a>
+Delete Link  
+<% end  %>
