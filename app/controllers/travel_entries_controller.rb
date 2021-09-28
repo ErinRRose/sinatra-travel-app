@@ -1,5 +1,10 @@
 class TravelEntriesController < ApplicationController
 
+    get '/travel_entries' do
+      @travel_entries = TravelEntry.all
+      erb :'travel_entries/index'
+    end
+
     # get new to render a form to create a new entry
     get '/travel_entries/new' do
       erb :'/travel_entries/new'  
@@ -27,7 +32,7 @@ class TravelEntriesController < ApplicationController
     get '/travel_entries/:id/edit' do
       set_travel_entry
       if logged_in?
-        if @travel_entry.user == current_user
+        if authorized?(@travel_entry)
           erb :'/travel_entries/edit'
         else
           redirect "users/#{current_user.id}"
@@ -40,7 +45,7 @@ class TravelEntriesController < ApplicationController
     patch '/travel_entries/:id' do
       set_travel_entry
       if logged_in?
-        if @travel_entry.user == current_user #&& params[:content] != ""
+        if authorized? #&& params[:content] != ""
           @travel_entry.update(content: params[:content], name_location: params[:name_location])
           redirect "/travel_entries/#{@travel_entry.id}"
         else
