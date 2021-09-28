@@ -5,7 +5,11 @@
 <strong><%= @travel_entry.name_location %></strong>
 <p><%= @travel_entry.content %></p>
 
-<% if authorized?(travel_entry) %>
+<% if authorized?(@travel_entry) %>
 <a href="/travel_entries/<%= @travel_entry.id %>/edit">Edit Entry</a>
-Delete Link  
+<br><br>
+ <form class="" action="/travel_entries/<%= @travel_entry.id %>" method="post">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" name="" value="Delete this Entry">
+</form>
 <% end  %>

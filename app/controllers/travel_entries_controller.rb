@@ -55,7 +55,16 @@ class TravelEntriesController < ApplicationController
         redirect '/'
       end
     end
-    # index route for all travel entries
+    
+    delete '/travel_entries/:id' do
+      set_travel_entry
+      if authorized?(@travel_entry)
+        @travel_entry.destroy
+        redirect '/travel_entries'
+      else
+        redirect '/travel_entries'
+      end
+    end
     private
 
     def set_travel_entry
