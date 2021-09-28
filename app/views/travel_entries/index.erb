@@ -1,1 +1,8 @@
-Index Page for Travel Entries
+All Travel Travel  
+<br><br>
+<% @travel_entries.each do |travel_entry|%>
+<strong><a href="/travel_entries/<%= travel_entry.id %>"><%= travel_entry.name_location %></a></strong>
+<p><%= travel_entry.content %></p>
+<p>By- <%= travel_entry.user.name %></p>
+<br><br>
+<% end %>
