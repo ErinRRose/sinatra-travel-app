@@ -45,7 +45,7 @@ class TravelEntriesController < ApplicationController
     patch '/travel_entries/:id' do
       set_travel_entry
       if logged_in?
-        if authorized? #&& params[:content] != ""
+        if authorized?(@travel_entry) 
           @travel_entry.update(content: params[:content], name_location: params[:name_location])
           redirect "/travel_entries/#{@travel_entry.id}"
         else

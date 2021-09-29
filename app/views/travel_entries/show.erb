@@ -6,7 +6,7 @@
 <p><%= @travel_entry.content %></p>
 
 <% if authorized?(@travel_entry) %>
-<a href="/travel_entries/<%= @travel_entry.id %>/edit">Edit Entry</a>
+<a href="/travel_entries/<%= @travel_entry.id %>/edit"><button type="button">Edit Entry</button></a>
 <br><br>
  <form class="" action="/travel_entries/<%= @travel_entry.id %>" method="post">
     <input type="hidden" name="_method" value="DELETE">
