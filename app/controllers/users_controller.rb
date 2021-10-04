@@ -14,11 +14,11 @@ class UsersController <ApplicationController
          session[:user_id] = @user.id
          #redirect to the user's landing page
 
-         #flash[:message] = "Welcome, #{@user.name}!"
+         flash[:message] = "Welcome, #{@user.name}!"
          redirect "users/#{@user.id}"
         else
             #invalid, redirect
-            #flash[:message] = "Your credentials are invalid  Please sign up or try again."
+            flash[:message] = "Your credentials are invalid  Please sign up or try again."
             redirect '/login'
         end
     end
